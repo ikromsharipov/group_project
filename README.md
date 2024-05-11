@@ -1,5 +1,5 @@
-# university-database-project
-# University Portal
+# Group Project | Database Systems
+# Learning Management System
 
 A web portal connecting students with professors, providing easy access to faculty information, and supporting a university's educational community
 
@@ -7,11 +7,11 @@ A web portal connecting students with professors, providing easy access to facul
 
 * Student Login/Registration
 * Professor Login/Registration
-* Searchable directory of professors (name, office, degree, etc.)
+* Add courses
 
 ## Technologies Used
 
-* **Backend:** Node.js (Express.js), PostgreSQL
+* **Backend:** Node.js (Express.js), MongoDB (or PostgreSQL)
 * **Frontend:** HTML, CSS, JavaScript (we might use React.js)
 
 ## Getting Started

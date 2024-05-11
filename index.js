@@ -1,5 +1,7 @@
 import express from 'express';
-import {create} from 'express-handlebars'
+import {create} from 'express-handlebars';
+import AuthRoutes from './routes/auth.js';
+import CoursesRoutes from './routes/courses.js';
 
 const app = express()
 
@@ -9,16 +11,9 @@ app.engine('hbs', hbs.engine);
 app.set('view engine', 'hbs');
 app.set('views', './views');
 
-app.get('/', (req, res) => {
-    res.render('index')
-    // res.sendFile(path.join(__dirname, "views", "index.html"))
-    // res.send('Main ')
-});
+app.use(AuthRoutes);
+app.use(CoursesRoutes);
 
-app.get('/about', (req, res) => {
-    res.render('about')
-    // res.sendFile(path.join(__dirname, "views", "about.html"));
-});
 
 
 const PORT = process.env.PORT || 4100
