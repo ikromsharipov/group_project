@@ -1,58 +1,59 @@
+import 'dotenv/config'; // Load environment variables
+
 import express from 'express';
-import {create} from 'express-handlebars';
+import { create } from 'express-handlebars';
 import mongoose from 'mongoose';
-import * as dotenv from 'dotenv'
 
 // Routes
 import AuthRoutes from './routes/auth.js';
 import CoursesRoutes from './routes/courses.js';
 
-dotenv.config()
+const app = express();
 
-const app = express()
-
-const hbs = create({defaultLayout: 'main', extname: 'hbs'})
-
+// Configure Handlebars templating engine
+const hbs = create({ defaultLayout: 'main', extname: 'hbs' });
 app.engine('hbs', hbs.engine);
 app.set('view engine', 'hbs');
 app.set('views', './views');
-app.use(express.static('public'));
-app.use(express.urlencoded({extended: true}));
-app.use(express.json())
 
+// Serve static files from the 'public' folder
+app.use(express.static('public'));
+
+// Parse incoming data (URL encoded forms and JSON)
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+
+// Connect to MongoDB database securely
+const connectDB = async () => {
+    try {
+      const conn = await mongoose.connect(process.env.MONGODB_URI, {
+        useNewUrlParser: true,
+        useUnifiedTopology: true,
+      });
+  
+      // Construct the full MongoDB URI
+      const { user, pass, host, name } = conn.connection;
+      const protocol = conn.connection.srv ? 'mongodb+srv://' : 'mongodb://';
+      const credentials = user && pass ? `${user}:${pass}@` : '';
+      const uri = `${protocol}${credentials}${host}/${name}`;
+  
+      // Log the full MongoDB URI
+      console.log(`MongoDB Connected: ${uri}`);
+    } catch (error) {
+      console.error(error);
+      process.exit(1); // Exit process on connection failure
+    }
+  };
+  
+  // Connect to MongoDB before starting the server
+  connectDB();
+  
+  
+  
+
+// Mount route handlers from separate files
 app.use(AuthRoutes);
 app.use(CoursesRoutes);
 
-// console.log(process.env.MONGO_URI);
-// Set strictQuery to false
-mongoose.set('strictQuery', false);
-
-// Connect to MongoDB
-mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
-    .then(() => {
-        console.log("MongoDB connected");
-        // Additional initialization code can go here
-    })
-    .catch((error) => {
-        console.error("Error connecting to MongoDB:", error);
-    });
-
-/*
-{
-    useNewUrlParser: true,
-    useFindAndModify: false,
-    useUnifiedTopology: true,
-},
- */
-
-const PORT = process.env.PORT || 4100
-app.listen(PORT, () => console.log(`Server is running on port: ${PORT}`))
-
-// mongodb+srv://ikromjonsharip:<password>@ikromjon.0jhmppb.mongodb.net/?retryWrites=true&w=majority&appName=ikromjon
-
-
-
-
-
-
-
+const PORT = process.env.PORT || 4100;
+app.listen(PORT, () => console.log(`Server is running on port: ${PORT}`));
