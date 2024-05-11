@@ -1,49 +1,80 @@
 <div class="container py-3">
-    <header>
-        <div class="d-flex flex-column flex-md-row align-items-center pb-3 mb-4 border-bottom">
-            <a href="/" class="d-flex align-items-center link-body-emphasis text-decoration-none">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-amd icon-margin" viewBox="0 0 16 16">
-  <path d="m.334 0 4.358 4.359h7.15v7.15l4.358 4.358V0zM.2 9.72l4.487-4.488v6.281h6.28L6.48 16H.2z"/>
-</svg>
-            <span class="fs-4" title="Learning Management System">LMS</span>
-            </a>
+  <header>
+    <div
+      class="d-flex flex-column flex-md-row align-items-center pb-3 mb-4 border-bottom me-2"
+    >
+      <a
+        href="/"
+        class="d-flex align-items-center link-body-emphasis text-decoration-none"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="16"
+          height="16"
+          fill="currentColor"
+          class="bi bi-amd icon-margin"
+          viewBox="0 0 16 16"
+        >
+          <path
+            d="m.334 0 4.358 4.359h7.15v7.15l4.358 4.358V0zM.2 9.72l4.487-4.488v6.281h6.28L6.48 16H.2z"
+          />
+        </svg>
+        <span class="fs-4" title="Learning Management System">LMS</span>
+      </a>
 
-            <nav class="d-inline-flex mt-2 mt-md-0 ms-md-auto">
-                {{#if isCourses}}
-                    <a class="me-3 py-2 link-body-emphasis" href="/courses">Courses</a>
-                {{else}}
-                    <a class="me-3 py-2 link-body-emphasis text-decoration-none" href="/courses">Courses</a>
-                {{/if}}
+      <nav class="d-inline-flex mt-2 mt-md-0 ms-md-auto gap-5 courseAddSize">
+        {{#if isCourses}}
+          <a class="me-3 py-2 link-body-emphasis" href="/courses">Courses</a>
+        {{else}}
+          <a
+            class="me-3 py-2 link-body-emphasis text-decoration-none"
+            href="/courses"
+          >Courses</a>
+        {{/if}}
 
-                {{#if isAdd}}
-                    <a class="me-3 py-2 link-body-emphasis" href="/add">Add</a>
-                {{else}}
-                    <a class="me-3 py-2 link-body-emphasis text-decoration-none" href="/add">Add</a>
-                {{/if}}
+        {{#if isAdd}}
+          <a class="me-3 py-2 link-body-emphasis" href="/add">Add</a>
+        {{else}}
+          <a
+            class="me-3 py-2 link-body-emphasis text-decoration-none"
+            href="/add"
+          >Add</a>
+        {{/if}}
 
-            <div class="btn-group" role="group" aria-label="Basic mixed styles example">
-                {{#if isLogin}}
-                    <button type="button" class="btn btn-primary active">
-                        <a href="/register" class="text-light text-decoration-none">Register</a>
-                    </button>
-                {{else}}
-                    <button type="button" class="btn btn-primary">
-                        <a href="/register" class="text-light text-decoration-none">Register</a>
-                    </button>
-                {{/if}}
+{{!-- Register --}}
+        <div
+          class="me-3"
+          {{!-- role="group" --}}
+          {{!-- aria-label="Basic mixed styles example" --}}
+        >
+          {{#if isLogin}}
+            <button type="button" class="btn btn-primary btnTextSize mb-2">
+              <a
+                href="/register"
+                class="text-light text-decoration-none"
+              >Register</a>
+            </button>
+          {{else}}
+            <button type="button" class="btn btn-primary btnTextSize mb-2">
+              <a
+                href="/register"
+                class="text-light text-decoration-none"
+              >Register</a>
+            </button>
+          {{/if}}
+          {{#if isRegister}}
+{{!-- Log in --}}
+            <button type="button" class="btn btn-success btnTextSize mb-2">
+              <a href="/login" class="text-light text-decoration-none">Log in</a>
+            </button>
+          {{else}}
+            <button type="button" class="btn btn-success btnTextSize mb-2">
+              <a href="/login" class="text-light text-decoration-none">Log in</a>
+            </button>
+          {{/if}}
 
-                {{#if isRegister}}
-                    <button type="button" class="btn btn-success active">
-                        <a href="/login" class="text-light text-decoration-none">Log in</a>
-                    </button>
-                {{else}}
-                    <button type="button" class="btn btn-success">
-                        <a href="/login" class="text-light text-decoration-none">Log in</a>
-                    </button>
-                {{/if}}
-        
         </div>
-            </nav>
-        </div>
-    </header>
+      </nav>
+    </div>
+  </header>
 </div>
