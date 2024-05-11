@@ -7,7 +7,7 @@ A web portal connecting students with professors, providing easy access to facul
 
 * Student Login/Registration
 * Professor Login/Registration
-* Add courses
+* Adding courses
 
 ## Technologies Used
 
