@@ -1,4 +1,4 @@
-# Group Project | Database Systems
+# Group Project
 # Learning Management System
 
 A web portal connecting students with professors, providing easy access to faculty information, and supporting a university's educational community
