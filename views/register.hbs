@@ -1,5 +1,17 @@
 <div class="w-75 mx-auto">
-  <p class="fs-1">Log in</p>
+  <p class="fs-1">Register</p>
+  {{#if registerError}}
+  <div class="alert alert-danger alert-dismissible fade show" role="alert">
+      <strong>Error</strong>
+      {{registerError}}
+      <button
+        type="button"
+        class="btn-close"
+        data-bs-dismiss="alert"
+        aria-label="Close"
+      ></button>
+    </div>
+  {{/if}}
   <form action="/register" method="post">
   <div class="d-flex gap-3">
     {{!-- First name --}}
@@ -45,6 +57,6 @@
       />
       <label for="floatingPassword">Password</label>
     </div>
-    <button type="submit" class="btn btn-primary mt-4">Log in</button>
+    <button type="submit" class="btn btn-primary mt-4">Register</button>
   </form>
 </div>

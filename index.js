@@ -3,12 +3,16 @@ import 'dotenv/config'; // Load environment variables
 import express from 'express';
 import { create } from 'express-handlebars';
 import mongoose from 'mongoose';
+import flash from 'connect-flash'
+import session from 'express-session';
 
 // Routes
 import AuthRoutes from './routes/auth.js';
 import CoursesRoutes from './routes/courses.js';
 
 const app = express();
+
+  
 
 // Configure Handlebars templating engine
 const hbs = create({ defaultLayout: 'main', extname: 'hbs' });
@@ -22,6 +26,8 @@ app.use(express.static('public'));
 // Parse incoming data (URL encoded forms and JSON)
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+app.use(session({secret: 'Ikromjon', resave: false, saveUninitialized: false}))
+app.use(flash());
 
 // Connect to MongoDB database securely
 const connectDB = async () => {
