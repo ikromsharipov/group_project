@@ -41,36 +41,43 @@
           >Add</a>
         {{/if}}
 
-{{!-- Register --}}
         <div
           class="me-3"
-          {{!-- role="group" --}}
-          {{!-- aria-label="Basic mixed styles example" --}}
+          {{! role="group" }}
+          {{! aria-label="Basic mixed styles example" }}
         >
-          {{#if isLogin}}
-            <button type="button" class="btn btn-primary btnTextSize mb-2">
-              <a
-                href="/register"
-                class="text-light text-decoration-none"
-              >Register</a>
+          {{#if token}}
+            <button type="button" class="btn btn-danger btnTextSize mb-2">
+              <a href="/logout" class="text-light text-decoration-none">Log out</a>
             </button>
           {{else}}
-            <button type="button" class="btn btn-primary btnTextSize mb-2">
-              <a
-                href="/register"
-                class="text-light text-decoration-none"
-              >Register</a>
-            </button>
-          {{/if}}
-          {{#if isRegister}}
-{{!-- Log in --}}
-            <button type="button" class="btn btn-success btnTextSize mb-2">
-              <a href="/login" class="text-light text-decoration-none">Log in</a>
-            </button>
-          {{else}}
-            <button type="button" class="btn btn-success btnTextSize mb-2">
-              <a href="/login" class="text-light text-decoration-none">Log in</a>
-            </button>
+
+            {{#if isLogin}}
+              {{! Register }}
+              <button type="button" class="btn btn-primary btnTextSize mb-2">
+                <a
+                  href="/register"
+                  class="text-light text-decoration-none"
+                >Register</a>
+              </button>
+            {{else}}
+              <button type="button" class="btn btn-primary btnTextSize mb-2">
+                <a
+                  href="/register"
+                  class="text-light text-decoration-none"
+                >Register</a>
+              </button>
+            {{/if}}
+            {{#if isRegister}}
+              {{! Log in }}
+              <button type="button" class="btn btn-success btnTextSize mb-2">
+                <a href="/login" class="text-light text-decoration-none">Log in</a>
+              </button>
+            {{else}}
+              <button type="button" class="btn btn-success btnTextSize mb-2">
+                <a href="/login" class="text-light text-decoration-none">Log in</a>
+              </button>
+            {{/if}}
           {{/if}}
 
         </div>

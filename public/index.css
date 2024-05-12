@@ -1,13 +1,10 @@
-.dark {
-    background-color: #000;
-}
 .icon-margin {
-    margin-right: 10px;
+  margin-right: 10px;
 }
 .courseAddSize {
-    font-size: 18px;
+  font-size: 18px;
 }
 .btnTextSize {
-    font-size: 18px;
-    border-radius: 30px;
+  font-size: 18px;
+  border-radius: 30px;
 }
